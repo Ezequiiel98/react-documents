@@ -19,14 +19,12 @@ if [ "$route" ];
     echo "Debe ingresar el nombre del proyecto del proyecto";
 fi
 
-#extencion de archivos  css
 case "$choiceExtensionCss" in
-  Si|si|sI|SI ) 
-        extensionCss='module.scss';
-        npm install 'node-sass';;
-  * ) extensionCss='module.css';;
+    Si|si|sI|SI ) 
+       extensionCss='module.scss' ;;
+   * ) extensionCss='module.css' ;;
 esac
-     
+
 # creo carpetas y modifico archivos 
 # -d comprueba si el directorio existe
 if [ -d $route/src ]; 
@@ -34,6 +32,7 @@ if [ -d $route/src ];
     rm -f  $route/public/logo*;
     
     cd  $route/src;
+
     mkdir -p components/App assets constants;
     
     ## App.js
@@ -51,6 +50,11 @@ if [ -d $route/src ];
     head -n 8 index.js | grep -v "serviceWorker" > indexTmp;
     mv indexTmp index.js;
     rm logo* App* se*.js;
+fi
+
+if [[ ${extensionCss} ==  'module.scss' ]];
+  then  
+    npm install node-sass;
 fi
 
 #depencencies
