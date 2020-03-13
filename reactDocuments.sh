@@ -52,17 +52,19 @@ if [ -d $route/src ];
     rm logo* App* se*.js;
 fi
 
+## instala sass 
 if [[ ${extensionCss} ==  'module.scss' ]];
   then  
     npm install node-sass;
 fi
+
 
 #depencencies
 if [[ ${dependencies} != '' ]]; 
   then  
     for i in ${dependencies[@]}
       do
-      npm install $i  
+       npm install $i  
     done
 fi
 
