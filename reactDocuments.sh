@@ -1,7 +1,9 @@
 #!/bin/bash
 echo  "";
-read -p 'Nombre/Ruta del proyecto a crear: ' route;
+read -p 'Nombre/Ruta del proyecto a crear: ' nameProyect;
 echo  "";
+
+route=$(echo $nameProyect | tr '[:upper:]' '[:lower:]');
 
 if [ "$route" ];
   then  
