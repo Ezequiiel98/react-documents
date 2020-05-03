@@ -49,7 +49,7 @@ if [ -d $route/src ];
     ## index.js 
     sed -i 's/\/App/\/components\/App/g' index.js;
     #lo guardo en un archivo temporal porque si no no se puede hacer
-    head -n 8 index.js | grep -v "serviceWorker" > indexTmp;
+    cat index.js  | grep -ve 'serviceWorker' -e '//' > indexTmp;
     mv indexTmp index.js;
     rm logo* App* se*.js;
 fi
