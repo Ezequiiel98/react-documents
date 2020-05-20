@@ -36,4 +36,3 @@ if [[ ${1} == '-c' ]];
   else
      createComponent screens ${2} ;
 fi 
-
