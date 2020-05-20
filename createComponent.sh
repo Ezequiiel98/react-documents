@@ -8,7 +8,7 @@ function createComponent {
   dir=$1;
   component=${2^};
   route=src/$dir/$component;
-  
+
   if [ -d $route ];
     then
       echo -e "\n${COLOR_ERROR}Error $component ya existe en $route\n";
@@ -18,7 +18,8 @@ function createComponent {
       touch $route/index.js $route/index.module.scss
       echo -e "import React from 'react';\n\nimport styles from './index.module.scss';\n\nexport default function $component() {
       return <h1>$component</h1>;\n}" > $route/index.js;
-      echo -e "\n${COLOR_SUCCESS}$component creado con exito en $route/$component\n";
+      echo -e "\n${COLOR_SUCCESS}$component creado con exito en $route\n";
+      exit 1;
   fi
 }
 
@@ -32,8 +33,7 @@ if [[ ${1} == '-c' ]];
   then 
     dir=components;
     createComponent components ${2};
-  elif [[ ${1} == '-s' ]];
-    then
+  else
      createComponent screens ${2} ;
 fi 
 
