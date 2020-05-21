@@ -3,6 +3,7 @@
 
 COLOR_ERROR='\033[1;91m';
 COLOR_SUCCESS='\033[1;92m';
+COLOR_ROUTE='\033[1;34m';
 
 function createComponent {
   dir=$1;
@@ -11,14 +12,14 @@ function createComponent {
 
   if [ -d $route ];
     then
-      echo -e "\n${COLOR_ERROR}Error $component ya existe en $route\n";
+      echo -e "\n${COLOR_ERROR}Error $component ya existe en ${COLOR_ROUTE}$route\n";
       exit 1;
     else
       mkdir -p $route;
       touch $route/index.js $route/index.module.scss
       echo -e "import React from 'react';\n\nimport styles from './index.module.scss';\n\nexport default function $component() {
       return <h1>$component</h1>;\n}" > $route/index.js;
-      echo -e "\n${COLOR_SUCCESS}$component creado con exito en $route\n";
+      echo -e "\n${COLOR_SUCCESS}$component creado con exito en ${COLOR_ROUTE}$route\n";
       exit 1;
   fi
 }
